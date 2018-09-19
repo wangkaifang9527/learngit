@@ -6,7 +6,6 @@
     color: #666;
     margin-top: 30rpx;
 }
-
 .order_head {
     padding-top: 15px;
     display: flex;
@@ -15,7 +14,6 @@
     align-items: center;
     height: 50rpx;
 }
-
 .head_left {
     flex: 1;
     color: #1c1e2f;
@@ -30,7 +28,6 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
 .head_left text {
     font-size: 20rpx;
     color: #333;
