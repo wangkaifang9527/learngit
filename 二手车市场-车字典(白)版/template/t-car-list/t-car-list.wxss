@@ -108,8 +108,6 @@
   margin: 0 auto;
   padding: 20rpx;
 }
-
-
 /*9宫格重构 2018-7-3*/
 .market_jiugongge{
   overflow: hidden;
