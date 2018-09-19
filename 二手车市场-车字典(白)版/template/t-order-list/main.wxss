@@ -46,7 +46,6 @@
     flex-direction: row;
     align-items: center;
 }
-
 .head_right image {
     width: 24rpx;
     height: 24rpx;
