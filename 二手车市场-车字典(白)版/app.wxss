@@ -1,4 +1,4 @@
-/**app.wxss**/
+/**app.wxss  diercijinlail**/
 @import "./lib/iconfont.wxss"; 
 page{
   background: #f6f6f6;
