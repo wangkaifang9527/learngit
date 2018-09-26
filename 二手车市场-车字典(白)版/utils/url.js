@@ -11,7 +11,7 @@ function checkStatusCode(res) {
                 image: '/images/tips/error.png',
                 duration: 1000
             })
-            return false;
+            return aalse;
         }
     } else {
         if (res.data.msg) {

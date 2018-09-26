@@ -86,7 +86,7 @@
               <button  id='onQueryMaintainLog' form-type='submit' >4S保养记录查询</button> 
           </view>
           <view class='li btn-press'>
-              <button  id='onQueryAccidentLog' form-type='submit'>车险定损查询</button> 
+              <button  id='onQueryAccidentLog' form-type='submit'>车险投保查询</button> 
           </view>
       </view>
 
@@ -128,7 +128,7 @@
       </view>
       
       <view class='btn btn-press'>
-          <button   id='onQueryinfoLog' form-type='submit'>车辆状态投保查询</button>
+          <button   id='onQueryinfoLog' form-type='submit'>车辆状态查询</button>
       </view>
   </view>
 

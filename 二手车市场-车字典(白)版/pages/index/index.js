@@ -12,8 +12,9 @@ Page({
    */
   data: {
 
-    share_title: '微信里的二手车市场 ，朋友圈的车源都发这！',
+    share_title: '微信里的二手车市场 ',
     share_path: 'pages/index/index',
+    share_image:'http://www.levau.com/share/ershouche_index.png',
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userflag: true,// 用户是否授权
     array: ['筛选', '车龄最短', '里程最少', '价格最低', '离我最近', '图文切换'],
@@ -109,7 +110,7 @@ Page({
         that.callbackData(data);
       });
     }
-
+    
   },
 
   
@@ -299,7 +300,7 @@ Page({
     return {
       title: title,
       path: path,
-      // imageUrl: that.data.share.imageUrl,
+      imageUrl: that.data.share_image,
       success: function (res1) {
         if(res.target == undefined){
           util.showToast('成功转发', 'success');
@@ -788,9 +789,10 @@ Page({
         console.log('查看更新后缓存的情况:', wx.getStorageSync("order-title-red"))
         //wx.setStorageSync("guarantee-remind", false);
       }
+      console.log("app", app.globalData.location)
     })
 
-
+    
 
 
   },

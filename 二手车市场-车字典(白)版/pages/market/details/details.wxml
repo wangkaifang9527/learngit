@@ -249,7 +249,9 @@
                   placeholder-style='color:#999;font-size:22rpx;' 
                   bindinput='bindinput'></input>
         </view>
-        <view class='pl' catchtap='pinglun'>评论</view>
+        <form  bindsubmit='pinglun' report-submit='true'>
+            <button class='pl'  form-type='submit'>评论</button>
+        </form>
       </view>
     </view>
     <!--一.5 评论区 -->
@@ -494,7 +496,9 @@
         <view class='shurukuang'>
           <input placeholder='说说您的看法' placeholder-style='color:#999;font-size:22rpx;' bindinput='bindinput'></input>
         </view>
-        <view class='pl' catchtap='pinglun'>评论</view>
+        <form  bindsubmit='pinglun' report-submit='true'>
+            <button class='pl'  form-type='submit'>评论</button>
+        </form>
       </view>
     </view>
     <!--二. 评论区 -->
@@ -735,7 +739,9 @@
         <view class='shurukuang'>
           <input placeholder='说说您的看法' placeholder-style='color:#999;font-size:22rpx;' bindinput='bindinput'></input>
         </view>
-        <view class='pl' catchtap='pinglun'>评论</view>
+        <form  bindsubmit='pinglun' report-submit='true'>
+            <button class='pl'  form-type='submit'>评论</button>
+        </form>
       </view>
     </view>
     <!-- 评论区 -->

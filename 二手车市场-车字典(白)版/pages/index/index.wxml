@@ -24,7 +24,7 @@
     </view>
 
     <view class='query' catchtap='onQuery'>
-        <image src='/images/sy/query.png'></image>
+        <image src='http://www.levau.com/icon/query.png'></image>
     </view>
 
     <view wx:if='{{change_flag}}'>

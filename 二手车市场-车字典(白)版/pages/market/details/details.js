@@ -209,7 +209,7 @@ Page({
       }
       if (commentList.length > 0) {
         for (var i = 0; i < commentList.length; i++) {
-          data.result.vehicle.commentList[i].commentTime = util.toDate(commentList[i].commentTime, 'YMDhms');
+          commentList[i].commentTime = util.toDate(commentList[i].commentTime, 'YMDhms');
         }
       }
       var vehicle = that.data.vehicle;
@@ -578,7 +578,8 @@ Page({
     url.ajaxPost(false, url.comment_comment, {
       openId: app.globalData.openid,
       vehicleId: that.data.vehicle.id,
-      content: that.data.pinglun_value
+      content: that.data.pinglun_value,
+      formId:e.detail.formId,
     }, function(data) {
       console.log("评论回调:", data, app.globalData.userInfo);
       var userInfo = app.globalData.userInfo;

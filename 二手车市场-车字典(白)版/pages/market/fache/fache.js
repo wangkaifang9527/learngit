@@ -879,6 +879,7 @@ Page({
       reward: from_data.reward, //悬赏金
       deadline: from_data.deadline,//悬赏时间
       needQuery: needQuery, //1 需要维保查询, 0 不需要
+      formId: e.detail.formId,
     },
       function (data) {
         console.log('编辑车辆信息回掉', data);
