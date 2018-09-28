@@ -38,7 +38,7 @@
       <view class='list'>
         <view class='li'>
           <view>车辆所在地</view>
-          <view class='grag'>{{vehicle.location}}</view>
+          <view class='grag location'>{{vehicle.location}}</view>
         </view>
         <view class='li'>
           <view>上牌日期</view>
@@ -47,6 +47,20 @@
         <view class='li'>
           <view>牌照辖区</view>
           <view class='grag'>{{vehicle.licenseLocation}}</view>
+        </view>
+      </view>
+      <view class='list'>
+        <view class='li'>
+          <view>车型</view>
+          <view class='grag'>{{vehicle.type}}</view>
+        </view>
+        <view class='li'>
+          <view>排放</view>
+          <view class='grag'>{{vehicle.emissionStandard}}</view>
+        </view>
+        <view class='li'>
+          <view>车系</view>
+          <view class='grag'>{{vehicle.nation}}</view>
         </view>
       </view>
 
@@ -137,7 +151,7 @@
     </view>
 
     <!-- 打赏车模 -->
-    <!-- <view wx:if='{{!vehicle.openid_flag}}' style='margin-bottom:48rpx'>
+    <view wx:if='{{!vehicle.openid_flag}}' style='margin-bottom:48rpx'>
       <view class='reward_model' catchtap='onRewardModel'>
         <view class='reward_model_left'>
           <image mode='aspectFit' 
@@ -149,7 +163,7 @@
       <view class='reward_avatarUrl'>
         <image src='{{userInfo.avatarUrl}}'></image>
       </view>
-    </view> -->
+    </view>
     
     <!-- 有偿规则动画 -->
     <view wx:if='{{vehicle.forwardMode==1}}'  class='bmgz' catchtap='onHelpGZopen'>
@@ -160,10 +174,7 @@
     </view>
     <!-- 有偿规则文字 -->
     <view class='ck_list_list {{help_GZ_open? "ck_list_list_show":""}}' catchtap='onHelpGZopen'>
-        带有蓝色有偿帮卖标识的为帮卖车辆；车主设置一定的
-佣金，用户帮助转发，转发后用户每次可获得0.5元零钱
-（转发后直接进入账户余额，可提现），每辆车每人每天
-最多可转发至10个不同群。
+        带有蓝色有偿帮卖标识的为帮卖车辆；车主设置一定的佣金，用户帮助转发，转发后用户每次可获得0.5元零钱（转发后直接进入账户余额，可提现），每辆车每人最多可转发至10个不同群。
     </view>
     
     
@@ -361,7 +372,7 @@
       <view class='list'>
         <view class='li'>
           <view>车辆所在地</view>
-          <view class='grag'>{{vehicle.location}}</view>
+          <view class='grag location'>{{vehicle.location}}</view>
         </view>
         <view class='li'>
           <view>上牌日期</view>
@@ -370,6 +381,20 @@
         <view class='li'>
           <view>牌照辖区</view>
           <view class='grag'>{{vehicle.licenseLocation}}</view>
+        </view>
+      </view>
+      <view class='list'>
+        <view class='li'>
+          <view>车型</view>
+          <view class='grag'>{{vehicle.type}}</view>
+        </view>
+        <view class='li'>
+          <view>排放</view>
+          <view class='grag'>{{vehicle.emissionStandard}}</view>
+        </view>
+        <view class='li'>
+          <view>车系</view>
+          <view class='grag'>{{vehicle.nation}}</view>
         </view>
       </view>
 
@@ -401,7 +426,7 @@
     
 
     <!-- 打赏车模 -->
-    <!-- <view wx:if='{{!vehicle.openid_flag}}' style='margin-bottom:48rpx'>
+    <view wx:if='{{!vehicle.openid_flag}}' style='margin-bottom:48rpx'>
       <view class='reward_model' catchtap='onRewardModel'>
         <view class='reward_model_left'>
           <image mode='aspectFit' 
@@ -413,12 +438,17 @@
       <view class='reward_avatarUrl'>
         <image src='{{userInfo.avatarUrl}}'></image>
       </view>
-    </view> -->
+    </view>
+    <!-- 有偿规则动画 -->
     <view wx:if='{{vehicle.forwardMode==1}}'  class='bmgz' catchtap='onHelpGZopen'>
         <image class='{{help_GZ_open?"B_show":"B"}}' src='/images/details/B.png' mode='widthFix'></image>
         <image class='{{help_GZ_open?"B_show":"M"}}' src='/images/details/M.png' mode='widthFix'></image>
         <image class='{{help_GZ_open?"B_show":"G"}}' src='/images/details/G.png' mode='widthFix'></image>
         <image class='{{help_GZ_open?"B_show":"Z"}}' src='/images/details/Z.png' mode='widthFix'></image>
+    </view>
+    <!-- 有偿规则文字 -->
+    <view class='ck_list_list {{help_GZ_open? "ck_list_list_show":""}}' catchtap='onHelpGZopen'>
+        带有蓝色有偿帮卖标识的为帮卖车辆；车主设置一定的佣金，用户帮助转发，转发后用户每次可获得0.5元零钱（转发后直接进入账户余额，可提现），每辆车每人最多可转发至10个不同群。
     </view>
     
     <!--二. 有偿转发详情 -->
@@ -582,7 +612,7 @@
       <view class='list'>
         <view class='li'>
           <view>车辆所在地</view>
-          <view class='grag'>{{vehicle.location}}</view>
+          <view class='grag location'>{{vehicle.location}}</view>
         </view>
         <view class='li'>
           <view>上牌日期</view>
@@ -593,6 +623,22 @@
           <view class='grag'>{{vehicle.licenseLocation}}</view>
         </view>
       </view>
+      <view class='list'>
+        <view class='li'>
+          <view>车型</view>
+          <view class='grag'>{{vehicle.type}}</view>
+        </view>
+        <view class='li'>
+          <view>排放</view>
+          <view class='grag'>{{vehicle.emissionStandard}}</view>
+        </view>
+        <view class='li'>
+          <view>车系</view>
+          <view class='grag'>{{vehicle.nation}}</view>
+        </view>
+      </view>
+
+
       <view class='title' style='font-size:28rpx;'>历史车况</view>
       <view class='query'>
           <view>维保记录:</view>
@@ -641,7 +687,7 @@
     </view>
 
     <!-- 打赏车模 -->
-    <!-- <view wx:if='{{!vehicle.openid_flag}}' style='margin-bottom:48rpx'>
+    <view wx:if='{{!vehicle.openid_flag}}' style='margin-bottom:48rpx'>
       <view class='reward_model' catchtap='onRewardModel'>
         <view class='reward_model_left'>
           <image mode='aspectFit' 
@@ -653,13 +699,18 @@
       <view class='reward_avatarUrl'>
         <image src='{{userInfo.avatarUrl}}'></image>
       </view>
-    </view> -->
+    </view>
 
+    <!-- 有偿规则动画 -->
     <view wx:if='{{vehicle.forwardMode==1}}'  class='bmgz' catchtap='onHelpGZopen'>
         <image class='{{help_GZ_open?"B_show":"B"}}' src='/images/details/B.png' mode='widthFix'></image>
         <image class='{{help_GZ_open?"B_show":"M"}}' src='/images/details/M.png' mode='widthFix'></image>
         <image class='{{help_GZ_open?"B_show":"G"}}' src='/images/details/G.png' mode='widthFix'></image>
         <image class='{{help_GZ_open?"B_show":"Z"}}' src='/images/details/Z.png' mode='widthFix'></image>
+    </view>
+    <!-- 有偿规则文字 -->
+    <view class='ck_list_list {{help_GZ_open? "ck_list_list_show":""}}' catchtap='onHelpGZopen'>
+        带有蓝色有偿帮卖标识的为帮卖车辆；车主设置一定的佣金，用户帮助转发，转发后用户每次可获得0.5元零钱（转发后直接进入账户余额，可提现），每辆车每人最多可转发至10个不同群。
     </view>
 
     <!-- 有偿转发详情 -->

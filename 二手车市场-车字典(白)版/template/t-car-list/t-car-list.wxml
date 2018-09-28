@@ -79,8 +79,8 @@
                   <image wx:else src='/images/sy/favorite_no.png'></image> -->
                   <view>{{collectCount}}</view>
               </view>
+              
               <view class='yi btn-press' 
-                    catchtap='pinglun' 
                     data-vehicleid='{{id}}' 
                     data-i='{{i}}' 
                     data-pinglun='{{commentCount}}' 

@@ -1,7 +1,10 @@
 <import src="/template/t-car-list/t-car-list.wxml" />
 
 <view class='container'>
-    <view class='title'><view>车字典二手车</view></view>
+    <view wx:if='{{userInfo.banner}}' style='width:100%;height:360rpx' >
+        <image src='{{userInfo.banner}}' mode='aspectFill' style='width:100%;height:360rpx;'></image>
+    </view>
+    <view wx:else class='title' ><view>车字典二手车</view></view>
 
     <view class='list'>
         <view class='li one active' 

@@ -767,6 +767,9 @@ Page({
       }
       post_url = url.vehicle_publishWithReward
     }
+    
+
+
     //判断是否需要维保查询 1.需要
     var needQuery = 0
     if (that.data.main_index == 1) {
@@ -810,6 +813,31 @@ Page({
     }
     if (from_data.cc == '') {
       util.showToast("排量为空", 'error');
+      return;
+    }
+
+    //排放 2018-9-27
+    var NS_list = that.data.NS_list
+    var emissionStandard = ''           //排放标准
+    for (var i = 0; i < NS_list.length; i++) {
+      if (NS_list[i].flag) {
+        emissionStandard = NS_list[i].name
+      }
+    }
+    if (emissionStandard == '') {
+      util.showToast("请选择排放", 'error');
+      return;
+    }
+    //车系 2018-9-27
+    var CS_list = that.data.CS_list
+    var nation = ''           //车系
+    for (var i = 0; i < CS_list.length; i++) {
+      if (CS_list[i].flag) {
+        nation = CS_list[i].name
+      }
+    }
+    if (nation == '') {
+      util.showToast("请选择车系", 'error');
       return;
     }
     
@@ -880,6 +908,8 @@ Page({
       deadline: from_data.deadline,//悬赏时间
       needQuery: needQuery, //1 需要维保查询, 0 不需要
       formId: e.detail.formId,
+      emissionStandard: emissionStandard,//排放
+      nation: nation,//车系
     },
       function (data) {
         console.log('编辑车辆信息回掉', data);

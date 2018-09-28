@@ -41,7 +41,7 @@
     </view>
     <view style='height:20rpx;'></view>
 
-    <!-- <view class='list btn-press' catchtap='onGirls'>
+    <view class='list btn-press' catchtap='onGirls'>
         <view class='li'>
             <image mode='aspectFit' src='/images/my/model.png'></image>
             <view class='ms'>我有 
@@ -51,7 +51,7 @@
         <view class='li'>
             <image class='yjt' mode='aspectFit' src='/images/my/right.png'></image>
         </view>
-    </view> -->
+    </view>
 
     <!-- <view class='list' catchtap='onFache'>
         <view class='li'>

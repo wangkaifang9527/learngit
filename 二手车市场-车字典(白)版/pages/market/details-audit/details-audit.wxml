@@ -206,6 +206,32 @@
             </block>
         </view>
 
+        <!-- 新增排放标准 -->
+        <view class='head'>
+            <text class='must'>*</text>
+            <text>排放</text>
+        </view>
+        <view class='yylist'>
+            <block wx:for="{{NS_list}}" wx:key="" wx:for-index="i">
+                <view class='li {{item.flag? "yes":"no"}} active' catchtap='onNS' data-index='{{i}}'>
+                  {{item.name}}
+                </view>
+            </block>
+        </view>
+        <!-- 新增车系 -->
+        <view class='head'>
+            <text class='must'>*</text>
+            <text>车系</text>
+        </view>
+        <view class='yylist'>
+            <block wx:for="{{CS_list}}" wx:key="" wx:for-index="i">
+                <view class='li {{item.flag? "yes":"no"}} active' catchtap='onCS' data-index='{{i}}'>
+                  {{item.name}}
+                </view>
+            </block>
+        </view>
+
+
         <view class='head'>
             <text class='must'>*</text>
             <text>车况自证（多选）</text>

@@ -66,6 +66,7 @@ page{
   border-radius:41px;
   box-shadow:6px 0px 16px rgba(0,0,0,0.36);
   margin-bottom: 80rpx;
+  margin-top: 100rpx;
 }
 .kf_1{
   color: #D0D3D9
@@ -117,4 +118,29 @@ page{
   padding: 20rpx 0rpx;
   border-radius: 10rpx;
   box-shadow:1px 0px 10px rgba(0,0,0,0.1);
+}
+
+/* 前往机动车查档 */
+.jdccd{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; 
+  width: 710rpx;
+  color: #111;
+  margin-top: 20rpx;
+}
+.jdccd image{
+  width: 120rpx;
+  height: 120rpx;
+}
+.jdccd .jili{
+  width:150rpx;
+  height:60rpx;
+  line-height:60rpx;
+  background:#13344B;
+  border-radius:100rpx;
+  font-size:24rpx;
+  color:#fff;
+  text-align:center;
 }

@@ -1,7 +1,7 @@
 
 <!-- <import src="../../../template/ad/ad.wxml" />
 <template is="ad"></template> -->
-<!-- <view class='red-title btn-ripple-effect' catchtap='onOpenRedTitle'>点击红包转发三个群返现金1～5元</view> -->
+<!-- <view class='red-title btn-ripple-effect' catchtap='onOpenRedTitle'>点击红包转发三个群返现金5元</view> -->
 
 
 <view class='kf_weixin'>
@@ -243,7 +243,7 @@
             <image src='/images/icon/red-title.png' mode='widthFix'></image>
         </view>
         <view class='layout-line h2'>查询成功后点击<text style='color:#FF3F42'>红包</text>转发三次</view>
-        <view class='layout-line h3'>随机返现金1～5元</view>
+        <view class='layout-line h3'>立返现金5元</view>
         <view class='layout-line h4'>可前往<text style='color:#13344B'>“余额(提现)”</text>提现</view>
         <view class='layout-line h5'>知道了</view>
         <view class='layout-line h6'>

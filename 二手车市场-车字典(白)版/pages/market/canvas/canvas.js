@@ -180,7 +180,8 @@ Page({
     ctx.fillText('【车况信息】', 5, 378)
     ctx.fillText('【车辆所在地】', 5, 408)
     ctx.fillText('【联系方式】', 5, 438)
-    ctx.fillText('【车源详情】请识别二维码', 5, 478)
+    ctx.fillText('【排放】',5,468)
+    ctx.fillText('【车源详情】请识别二维码', 5, 498)
 
     ctx.fillText(vehicle.licenseDate, 120, 288)
     ctx.fillText(vehicle.licenseLocation, 120, 318)
@@ -190,6 +191,11 @@ Page({
     ctx.fillText('', 120, 378)
     ctx.fillText(vehicle.location, 120, 408)
     ctx.fillText(vehicle.cellphoneNumber, 120, 438)
+    var emissionStandard = ''
+    if (vehicle.emissionStandard){
+      emissionStandard = vehicle.emissionStandard
+    }
+    ctx.fillText(emissionStandard,120,468)
   
     ctx.setFontSize(12)
     ctx.setFillStyle('#999999')

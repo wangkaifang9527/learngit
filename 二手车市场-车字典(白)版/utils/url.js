@@ -291,5 +291,11 @@ module.exports = {
   order_detail2: server2 + '/order/orderDetail2',
 // 4  收红包：  redEnvelope/unpack  参数  openId  envelopeId 
   redEnvelope_unpack: server2 + '/redEnvelope/unpack',
+
+//   修改经销商的banner
+// 1 获取token  my / getToken  参数 openId
+  my_getToken: server2+'/my/getToken',
+// 2 修改   my/changeBanner 参数 openId requestId
+  my_changeBanner: server2 + '/my/changeBanner'
 }
 

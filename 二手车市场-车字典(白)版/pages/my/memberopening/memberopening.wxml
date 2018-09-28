@@ -5,8 +5,6 @@
 </view>
 
 
-
-
 <view class="container">
     <view class='h1'>普通充值</view>
     <view class='input' >
@@ -108,7 +106,16 @@
              
           </view>
         </block>
+    </view>
 
+    <view class='jdccd' >
+        <view class='li'>
+            <image src='/images/icon/jdccd.png'></image>
+        </view>
+        <view class='li'>机车档案查询</view>
+        <view class='li'>
+            <view class='jili' catchtap='jdccd'>立即前往</view>
+        </view>
     </view>
 
     <view class='kf_button' class='quedingkaitong active' catchtap='quedingkaitong'>

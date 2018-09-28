@@ -14,7 +14,7 @@ Page({
     isEmpty: true,//第一次为空
     isloading: false,//
     isloadover: false,//
-    path: 'pages/market/details/details',//分享的页面路径
+    path: 'pages/my/his-homepage/his-homepage',//分享的页面路径
     change_flag: false,//图文与9宫格切换
     pinglun_flag: false,//点击评论出险
     tuwen_url: '/images/chonggou/shichang/jiugonggebai.png',
@@ -37,7 +37,16 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    //wx.hideShareMenu()//隐藏转发按钮
+    app.getUserId(function (data) {
+      wx.hideLoading();
+      that.callBackgetUserId(options, data);
+    });
+    
+  },
+
+  //身份获取完毕后回调
+  callBackgetUserId: function (options, data) {
+    var that = this
     that.setData({
       orders: [],//渲染数据
       isEmpty: true,//第一次为空
@@ -46,6 +55,8 @@ Page({
     })
     count = 0;
     wx.showLoading({ title: "提交中" });
+    var openId = app.globalData.openid
+    
     url.ajaxGet(false, url.myVehicleList, {
       openId: app.globalData.openid,
       location: app.globalData.location,
@@ -63,6 +74,7 @@ Page({
   onPullDownRefresh: function () {
     var that = this;
     console.log('下拉刷新');
+
     wx.showNavigationBarLoading();//在当前页面显示导航条加载动画。
     this.setData({
       isloading: true,
@@ -113,8 +125,8 @@ Page({
       console.log('button', res.target)
     }
     return {
-      title: '车辆详细信息',
-      path: that.data.path + "?id_=" + res.target.dataset.id,
+      title: '我的主页',
+      path: that.data.path + "?targetOpenId=" + app.globalData.openid,
       // imageUrl: that.data.share.imageUrl,
       success: function (res) {
         console.log(app.globalData.openid);
@@ -178,6 +190,9 @@ Page({
       });
     }
     console.log('列表数据:', vehicleList);
+    if(data.result.userInfo.banner != undefined){
+      data.result.userInfo.banner = url.qiniu+data.result.userInfo.banner
+    }
     //更新数据
     that.setData({
       list: orders_data,
@@ -558,5 +573,82 @@ Page({
     that.setData({
       list: list
     });
+  },
+  //点击九宫格图片
+  jiugonggetupian: function (e) {
+    wx.navigateTo({
+      url: '/pages/market/details/details?id=' + e.currentTarget.dataset.id,
+    })
+  },
+
+  //详情
+  onCarDetails: function (e) {
+    console.log('详情', e);
+    wx.navigateTo({
+      url: '/pages/market/details/details?id=' + e.currentTarget.dataset.id,
+    })
+  },
+
+  myCover: function(){
+    var that = this;
+    //从本地相册选择图片或使用相机拍照。
+    wx.chooseImage({
+      count: 1, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var tempFilePaths = res.tempFilePaths
+        console.log("选择图片:", tempFilePaths, tempFilePaths.length);
+
+        url.ajaxGet(false, url.my_getToken, {
+          openId: app.globalData.openid,
+          'type': 1,
+        }, function (data) {
+          console.log("获取上传图片的token:", data);
+          var requestId = data.result.requestId
+          wx.showLoading({
+            title: "上传中",
+            mask: false
+          });
+          for (var i = 0; i < tempFilePaths.length; i++) {
+            wx.uploadFile({
+              url: 'https://up.qbox.me',
+              filePath: tempFilePaths[i],
+              name: 'file',
+              formData: {
+                'key': data.result.token.fileName,
+                'token': data.result.token.token
+              },
+              header: {// 设置请求的 header
+                'content-type': 'multipart/form-data',
+              },
+              success: function (res) {
+                console.log('res', res);
+                var data = JSON.parse(res.data);
+                console.log(url.qiniu + data.key);
+                var userInfo = that.data.userInfo
+                userInfo.banner = url.qiniu + data.key
+                that.setData({
+                  userInfo:userInfo
+                });
+                url.ajaxPost(false, url.my_changeBanner, {
+                  openId: app.globalData.openid,
+                  requestId: requestId,
+                }, function (data) {
+                  console.log("服务器:", data);
+                });
+                setTimeout(function () {
+                  wx.hideLoading();
+                }, 2000);
+              },
+              fail(error) {
+                console.log(error)
+              }
+            });
+          }
+        });
+      }
+    })
   },
 })

@@ -14,7 +14,7 @@ Page({
     isEmpty: true,//第一次为空
     isloading: false,//
     isloadover: false,//
-    path: 'pages/market/details/details',//分享的页面路径
+    path: 'pages/my/his-homepage/his-homepage',//分享的页面路径
     change_flag: true,//图文与9宫格切换
     pinglun_flag: false,//点击评论出险
     tuwen_url: '/images/chonggou/shichang/tuwenbai.png',
@@ -40,6 +40,17 @@ Page({
     console.log('targetOpenId',options.targetOpenId);
     var that = this;
     //wx.hideShareMenu()//隐藏转发按钮
+    app.getUserId(function (data) {
+      wx.hideLoading();
+      that.callBackgetUserId(options, data);
+    });
+
+    
+  },
+
+  callBackgetUserId: function (options, data) {
+    var that = this;
+    //wx.hideShareMenu()//隐藏转发按钮
     that.setData({
       list: [],//渲染数据
       isEmpty: true,//第一次为空
@@ -58,9 +69,8 @@ Page({
       console.log("看别人的主页:", data);
       that.callbackData(data);
     });
-  },
 
-  
+  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -118,8 +128,8 @@ Page({
       console.log('button', res.target)
     }
     return {
-      title: '车辆详细信息',
-      path: that.data.path + "?id_=" + res.target.dataset.id,
+      title: '他人主页',
+      path: that.data.path + "?targetOpenId="+ that.data.targetOpenId ,
       // imageUrl: that.data.share.imageUrl,
       success: function (res) {
         console.log(app.globalData.openid);
@@ -179,6 +189,9 @@ Page({
       });
     }
     console.log('列表数据:', vehicleList);
+    if(data.result.userInfo.banner != undefined){
+      data.result.userInfo.banner = url.qiniu + data.result.userInfo.banner
+    }
     //更新数据
     that.setData({
       list: orders_data,

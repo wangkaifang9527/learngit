@@ -334,6 +334,17 @@ Page({
 
     data.result.vehicle.location = data.result.vehicle.location.split(",")[1]
     data.result.vehicle.ratio_name = '维保记录和出险 油漆面 钣金 内饰 骨架 底盘 发动机 变速箱 疑似更换松动'
+
+    if (data.result.vehicle.type == '' || data.result.vehicle.type == undefined){
+      data.result.vehicle.type = '无'
+    }
+    if (data.result.vehicle.emissionStandard == '' || data.result.vehicle.emissionStandard == undefined) {
+      data.result.vehicle.emissionStandard = '无'
+    }
+    if (data.result.vehicle.nation == '' || data.result.vehicle.nation == undefined) {
+      data.result.vehicle.nation = '无'
+    }
+
     that.setData({
       isloadover: false,
     });

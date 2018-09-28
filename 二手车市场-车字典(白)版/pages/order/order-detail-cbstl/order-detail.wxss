@@ -163,7 +163,7 @@
 }
 
 .result_detail .line .text_box .p text {
-    width: 200rpx;
+    min-width: 200rpx;
 }
 
 .result_detail .line .text_box .p view {

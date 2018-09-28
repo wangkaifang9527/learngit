@@ -447,6 +447,12 @@ input{
 .base .grag{
   color: #999;
 }
+.base .location{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+  max-width: 250rpx;
+}
 .base .query{
   display: flex;
   flex-direction: row;

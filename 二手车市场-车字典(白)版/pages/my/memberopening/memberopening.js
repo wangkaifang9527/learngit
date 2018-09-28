@@ -73,47 +73,66 @@ Page({
         data.result.cardList[i].description0 = sp[0];
         data.result.cardList[i].description1 = sp[1];
       }
-      if (data.result.cardList[0].id == 1){
+      if (data.result.cardList.length>0){
+        if (data.result.cardList[0].id == 1) {
+          that.setData({
+            putong: true,
+            huiyuanka: 'http://www.levau.com/member/putongka.png',
+            cardId: data.result.cardList[0].id,
+            title: data.result.cardList[0].title
+          })
+        } else if (data.result.cardList[0].id == 2) {
+          that.setData({
+            huangjin: true,
+            huiyuanka: 'http://www.levau.com/member/huangjinka.png',
+            cardId: data.result.cardList[0].id,
+            title: data.result.cardList[0].title
+          })
+        } else if (data.result.cardList[0].id == 3) {
+          that.setData({
+            zhuanshiyue: true,
+            huiyuanka: 'http://www.levau.com/member/zhuanshiyueka.png',
+            cardId: data.result.cardList[0].id,
+            title: data.result.cardList[0].title
+          })
+        } else if (data.result.cardList[0].id == 4) {
+          that.setData({
+            zhuanshinian: true,
+            huiyuanka: 'http://www.levau.com/member/zhuanshinianka.png',
+            cardId: data.result.cardList[0].id,
+            title: data.result.cardList[0].title
+          })
+        } else if (data.result.cardList[0].id == 5) {
+          that.setData({
+            heika: true,
+            huiyuanka: 'http://www.levau.com/member/heika.png',
+            cardId: data.result.cardList[0].id,
+            title: data.result.cardList[0].title
+          })
+        } else if (data.result.cardList[0].id == 6) {
+          that.setData({
+            chongzhi198: true,
+            huiyuanka: 'http://www.levau.com/member/198.png',
+            cardId: data.result.cardList[0].id,
+            title: data.result.cardList[0].title
+          })
+        } else if (data.result.cardList[0].id == 7) {
+          that.setData({
+            chongzhi298: true,
+            huiyuanka: 'http://www.levau.com/member/298.png',
+            cardId: data.result.cardList[0].id,
+            title: data.result.cardList[0].title
+          })
+        }
+      }else{
         that.setData({
-          putong: true,
-          huiyuanka: 'http://www.levau.com/member/putongka.png',
-        })
-      } else if (data.result.cardList[0].id == 2){
-        that.setData({
-          huangjin: true,
-          huiyuanka: 'http://www.levau.com/member/huangjinka.png',
-        })
-      } else if (data.result.cardList[0].id == 3) {
-        that.setData({
-          zhuanshiyue: true,
-          huiyuanka: 'http://www.levau.com/member/zhuanshiyueka.png',
-        })
-      } else if (data.result.cardList[0].id == 4) {
-        that.setData({
-          zhuanshinian: true,
-          huiyuanka: 'http://www.levau.com/member/zhuanshinianka.png',
-        })
-      } else if (data.result.cardList[0].id == 5) {
-        that.setData({
-          heika: true,
-          huiyuanka: 'http://www.levau.com/member/heika.png',
-        })
-      } else if (data.result.cardList[0].id == 6) {
-        that.setData({
-          chongzhi198: true,
-          huiyuanka: 'http://www.levau.com/member/198.png',
-        })
-      } else if (data.result.cardList[0].id == 7) {
-        that.setData({
-          chongzhi298: true,
-          huiyuanka: 'http://www.levau.com/member/298.png',
+          huiyuanka: 'http://www.levau.com/member/bushihuiyuan.png',
         })
       }
       
+      
       that.setData({
         cardList: data.result.cardList,
-        cardId: data.result.cardList[0].id,
-        title: data.result.cardList[0].title
       })
       console.log(that.data.cardList);
     });
@@ -271,6 +290,7 @@ Page({
   quedingkaitong:function(){
     // util.showToast('敬请期待', 'error');
     var that = this;
+
     if (that.data.jinqian_input_value == ''){
       console.log('输入金额为空');
       
@@ -285,6 +305,10 @@ Page({
     // if (that.data.cardtype == 3){
     //   prompt = '确认覆盖(取消)原有的会员,更换成' + that.data.title+'吗?覆盖原有的会员将不存在'
     // }
+    if (that.data.cardId == ''){
+      util.showToast('会员卡已下架', 'error');
+      return 
+    }
     wx.showModal({
       title: '提示',
       content: prompt,
@@ -457,6 +481,18 @@ Page({
       }
     })
   },
-
+  jdccd: function(){
+    wx.navigateToMiniProgram({
+      appId: 'wxf3fd87c5513ce5b9',
+      path: 'pages/index/index',
+      extraData: {
+        foo: 'bar'
+      },
+      envVersion: 'release',
+      success(res) {
+        // 打开成功
+      }
+    })
+  },
   
 })

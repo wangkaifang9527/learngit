@@ -243,6 +243,26 @@ Page({
     var region = [];
     region.push(locations[0]);
     region.push(locations[1]);
+    //新增排放 和车系
+    var emissionStandard = data.result.vehicle.emissionStandard
+    var NS_list = that.data.NS_list
+    if (emissionStandard != undefined && emissionStandard != 'undefined'){
+      for (var i = 0; i < NS_list.length;i++){
+        if (NS_list[i].name == emissionStandard){
+          NS_list[i].flag = true
+        }
+      }
+    }
+    var nation = data.result.vehicle.nation
+    var CS_list = that.data.CS_list
+    if (nation != undefined && nation != 'undefined') {
+      for (var i = 0; i < CS_list.length; i++) {
+        if (CS_list[i].name == nation) {
+          CS_list[i].flag = true
+        }
+      }
+    }
+
     //判断是否有偿
     var forwardMode =  data.result.vehicle.forwardMode
     if (forwardMode == undefined || forwardMode == ''){
@@ -283,7 +303,9 @@ Page({
       sellMode: sellMode,
       title_flag: title_flag,
       reward: reward,
-      description: data.result.vehicle.description
+      description: data.result.vehicle.description,
+      NS_list: NS_list,//排放
+      CS_list: CS_list,//车系
     });
   },
 
@@ -911,6 +933,31 @@ Page({
         }
       }
     }
+
+    //排放 2018-9-27
+    var NS_list = that.data.NS_list
+    var emissionStandard = ''           //排放标准
+    for (var i = 0; i < NS_list.length; i++) {
+      if (NS_list[i].flag) {
+        emissionStandard = NS_list[i].name
+      }
+    }
+    if (emissionStandard == '') {
+      util.showToast("请选择排放", 'error');
+      return;
+    }
+    //车系 2018-9-27
+    var CS_list = that.data.CS_list
+    var nation = ''           //车系
+    for (var i = 0; i < CS_list.length; i++) {
+      if (CS_list[i].flag) {
+        nation = CS_list[i].name
+      }
+    }
+    if (nation == '') {
+      util.showToast("请选择车系", 'error');
+      return;
+    }
     //var chekuang = that.data.chekuang;
     var brief = '';
     console.log(type, brief, app.globalData.openid, that.data.requestId);
@@ -955,7 +1002,9 @@ Page({
       needQuery: needQuery, //1 需要维保查询, 0 不需要
       forwardMode: that.data.forwardMode,
       sellMode: that.data.sellMode,
-      formId: e.detail.formId
+      formId: e.detail.formId,
+      emissionStandard: emissionStandard,//排放
+      nation: nation,//车系
     },
       function (data) {
         console.log('编辑车辆信息回掉', data);
@@ -1302,5 +1351,38 @@ Page({
       videos_images: videos_images,
       removeFiles: removeFiles,
     });
+  },
+
+  //排放
+  onNS: function (e) {
+    var that = this
+    var NS_list = that.data.NS_list
+    var index = e.currentTarget.dataset.index
+    for (var i = 0; i < NS_list.length; i++) {
+      if (index == i) {
+        NS_list[i].flag = !NS_list[index].flag
+      } else {
+        NS_list[i].flag = false
+      }
+    }
+    that.setData({
+      NS_list: NS_list,
+    })
+  },
+  //车系
+  onCS: function (e) {
+    var that = this
+    var CS_list = that.data.CS_list
+    var index = e.currentTarget.dataset.index
+    for (var i = 0; i < CS_list.length; i++) {
+      if (index == i) {
+        CS_list[i].flag = !CS_list[index].flag
+      } else {
+        CS_list[i].flag = false
+      }
+    }
+    that.setData({
+      CS_list: CS_list,
+    })
   },
 })

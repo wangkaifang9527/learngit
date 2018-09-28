@@ -73,19 +73,19 @@
 }
 .list .one{
   position:  relative;
-  top: -51rpx;
+  top: -40rpx;
 }
 .list .one .jia{
-  width:35rpx;
-  height:35rpx;
+  width:70rpx;
+  height:30rpx;
   background:rgba(19,52,75,1);
   color:#fff;
   text-align:center;
   margin:0 auto;
-  margin-top:-25rpx;
+  margin-top:0rpx;
   position:relative;
-  line-height:35rpx;
-  border-radius:30rpx;
+  line-height:30rpx;
+  border-radius:100rpx;
 }
 .single{
   font-size: 28rpx;
